@@ -47,13 +47,13 @@ def gedcomData():
                     'age': "NA",
                     'alive': True, 
                     'death': "NA", 
-                    'child': {}, 
-                    'spouse': {}
+                    'child': set(), 
+                    'spouse': set()
                 }
                 indi_list.append(new_indi)
                 print("=========ADDED NEW INDI=========")
                 indi_i = indi_i + 1
-            elif tag == "NAME" and level == 1:
+            elif tag == "NAME":
                 indi_list[indi_i]['name'] = arguments
             elif tag == "SEX":
                 indi_list[indi_i]['gender']= arguments
@@ -64,9 +64,9 @@ def gedcomData():
                     indi_list[indi_i]['death'] = arguments
                     indi_list[indi_i]['alive'] = False
             elif tag == "FAMS":
-                indi_list[indi_i]['spouse'].append(arguments)
+                indi_list[indi_i]['spouse'].add(arguments)
             elif tag == "FAMC":
-                indi_list[indi_i]['child'].append(arguments)
+                indi_list[indi_i]['child'].add(arguments)
         
         # print the second line
         if hasArgs == True:
@@ -76,7 +76,7 @@ def gedcomData():
 
         prev_tag = tag
          # print("Current indi_i: %s" % (indi_i))
-        print(indi_list)
+    print(indi_list)
     gedcom.close()
 
 if __name__ == "__main__":
