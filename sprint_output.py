@@ -1,9 +1,6 @@
 
-def gedcomData():
+def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
-
-    indi_list = []
-    fam_list = []
 
     indi_i = -1
     fam_i = -1
@@ -76,8 +73,12 @@ def gedcomData():
 
         prev_tag = tag
          # print("Current indi_i: %s" % (indi_i))
-    print(indi_list)
     gedcom.close()
 
 if __name__ == "__main__":
-    gedcomData()
+    indi_list = []
+    fam_list = []
+
+    gedcomData(indi_list, fam_list)
+    
+    print(indi_list)
