@@ -1,3 +1,4 @@
+from prettytable import PrettyTable 
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -66,10 +67,10 @@ def gedcomData(indi_list, fam_list):
                 indi_list[indi_i]['child'].add(arguments)
         
         # print the second line
-        if hasArgs == True:
-            print("<-- %s|%s|%s|%s" % (level, tag, valid, arguments))
-        else:
-            print("<-- %s|%s|%s" % (level, tag, valid))
+        # if hasArgs == True:
+        #     print("<-- %s|%s|%s|%s" % (level, tag, valid, arguments))
+        # else:
+        #     print("<-- %s|%s|%s" % (level, tag, valid))
 
         prev_tag = tag
          # print("Current indi_i: %s" % (indi_i))
@@ -80,5 +81,13 @@ if __name__ == "__main__":
     fam_list = []
 
     gedcomData(indi_list, fam_list)
-    
-    print(indi_list)
+
+    # print(indi_list)
+
+    indi_table = PrettyTable()
+    indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
+
+    for indi in indi_list:
+        indi_table.add_row([indi['ID'], indi['name'], indi['gender'], indi['birthday'], indi['age'], indi['alive'], indi['death'], indi['child'], indi['spouse']])
+
+    print(indi_table)
