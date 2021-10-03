@@ -1,8 +1,11 @@
 from prettytable import PrettyTable 
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
 
+    months = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6, 'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12}
     indi_i = -1
     fam_i = -1
 
@@ -56,11 +59,24 @@ def gedcomData(indi_list, fam_list):
             elif tag == "SEX":
                 indi_list[indi_i]['gender']= arguments
             elif tag == "DATE":
+                date_list = arguments.split(" ")
+                day = int(date_list[0])
+                month = months[date_list[1]]
+                year = int (date_list[2])
+                given_date = date(year, month, day)
+                today = date.today()
                 if prev_tag == "BIRT":
                     indi_list[indi_i]['birthday'] = arguments
+                    indi_list[indi_i]['age'] = relativedelta(today, given_date).years
                 elif prev_tag == "DEAT":
+                    bdate_list = indi_list[indi_i]['birthday'].split(" ")
+                    b_day = int(bdate_list[0])
+                    b_month = months[bdate_list[1]]
+                    b_year = int (bdate_list[2])
+                    b_date = date(b_year, b_month, b_day)
                     indi_list[indi_i]['death'] = arguments
                     indi_list[indi_i]['alive'] = False
+                    indi_list[indi_i]['age'] = relativedelta(given_date, b_date).years
             elif tag == "FAMS":
                 indi_list[indi_i]['spouse'].add(arguments)
             elif tag == "FAMC":
@@ -88,6 +104,10 @@ if __name__ == "__main__":
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
 
     for indi in indi_list:
+        if len(indi['child']) == 0:
+            indi['child'] = "NA"
+        if len(indi['spouse']) == 0:
+            indi['spouse'] = "NA"
         indi_table.add_row([indi['ID'], indi['name'], indi['gender'], indi['birthday'], indi['age'], indi['alive'], indi['death'], indi['child'], indi['spouse']])
 
     print(indi_table)
