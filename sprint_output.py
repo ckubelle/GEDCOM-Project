@@ -161,8 +161,10 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
+    print("")
+    print("Individuals")
     print(indi_table)
-    print()
+    print("Families")
     print(fam_table)
     # print all found errors and anomalies
     for err in errors:
