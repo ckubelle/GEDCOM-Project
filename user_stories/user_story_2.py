@@ -16,16 +16,15 @@ def birthBeforeMarriage(indi_list, fam_list):
     for fam in fam_list:
         husbID = fam["husb_id"]
         wifeID = fam["wife_id"]
-        if fam["married"] != "NA":
-            marrMonth = fam["married"].strftime("%m")
-            marrDay = fam["married"].strftime("%d")
-            marrYear = fam["married"].strftime("%Y")
         for indi in indi_list:
             if indi["id"] == husbID or indi["id"] == wifeID:
-                if indi["birthday"] != "NA":
+                if indi["birthday"] != "NA" and fam["married"] != "NA":
                     birthMonth = indi["birthday"].strftime("%m")
                     birthDay = indi["birthday"].strftime("%d")
                     birthYear = indi["birthday"].strftime("%Y")
+                    marrMonth = fam["married"].strftime("%m")
+                    marrDay = fam["married"].strftime("%d")
+                    marrYear = fam["married"].strftime("%Y")
                     check = isBirthBeforeMarr(int(birthMonth), int(birthDay), int(birthYear), int(marrMonth), int(marrDay), int(marrYear))
                 if check == False:
                     errorStatements.append("Error US02: Birth date of %s (%s) occurs after marriage date in Family %s" % (indi["name"].replace("/", ""), indi["id"], fam["id"]))
