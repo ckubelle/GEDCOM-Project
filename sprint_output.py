@@ -1,6 +1,7 @@
 from prettytable import PrettyTable 
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
+from user_stories.user_story_2 import birthBeforeMarriage
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -10,11 +11,12 @@ def gedcomData(indi_list, fam_list):
     fam_i = -1
 
     prev_tag = ""
+    prev_lvl = ""
 
     gedcom = open("gedcom_testfile_1.ged")
     for line in gedcom:
         # print the first line
-        print("--> %s" % (line.strip()))
+        # print("--> %s" % (line.strip()))
         # start splitting the line
         splitLine = line.split(" ", 2)
         level = splitLine[0].strip()
@@ -38,7 +40,7 @@ def gedcomData(indi_list, fam_list):
         # add new individual or individual's data
         if valid == "Y":
             # individual tags
-            if tag == "INDI":
+            if tag == "INDI" and level == "0":
                 new_indi = {
                     'id': arguments,
                     'name': "NA",
@@ -51,13 +53,13 @@ def gedcomData(indi_list, fam_list):
                     'spouse': set()
                 }
                 indi_list.append(new_indi)
-                print("=========ADDED NEW INDI=========")
+                # print("=========ADDED NEW INDI=========")
                 indi_i = indi_i + 1
-            elif tag == "NAME":
+            elif tag == "NAME" and level == "1":
                 indi_list[indi_i]['name'] = arguments
-            elif tag == "SEX":
+            elif tag == "SEX" and level == "1":
                 indi_list[indi_i]['gender']= arguments
-            elif tag == "DATE":
+            elif tag == "DATE" and level == "2":
                 # create date object from line
                 date_list = arguments.split(" ")
                 day = int(date_list[0])
@@ -75,12 +77,14 @@ def gedcomData(indi_list, fam_list):
                     indi_list[indi_i]['age'] = relativedelta(given_date, b_date).years
                 elif prev_tag == "MARR":
                     fam_list[fam_i]['married'] = given_date
-            elif tag == "FAMS":
+                elif prev_tag == "DIV":
+                    fam_list[fam_i]['divorced'] = given_date
+            elif tag == "FAMS" and level == "1":
                 indi_list[indi_i]['spouse'].add(arguments)
-            elif tag == "FAMC":
+            elif tag == "FAMC" and level == "1":
                 indi_list[indi_i]['child'].add(arguments)
             # family tags
-            elif tag == "FAM":
+            elif tag == "FAM" and level == "0":
                 new_fam = {
                     'id': arguments,
                     'married': "NA",
@@ -92,25 +96,25 @@ def gedcomData(indi_list, fam_list):
                     'children': set()
                 }
                 fam_list.append(new_fam)
-                print("=========ADDED NEW FAM=========")
+                # print("=========ADDED NEW FAM=========")
                 fam_i = fam_i + 1
-            elif tag == "HUSB":
+            elif tag == "HUSB" and level == "1":
                 husb_name = ""
                 for indi in indi_list:
                     if indi['id'] == arguments:
                         husb_name = indi['name']
-                        break;
+                        break
                 fam_list[fam_i]['husb_id'] = arguments
                 fam_list[fam_i]['husb_name'] = husb_name
-            elif tag == "WIFE":
+            elif tag == "WIFE" and level == "1":
                 wife_name = ""
                 for indi in indi_list:
                     if indi['id'] == arguments:
                         wife_name = indi['name']
-                        break;
+                        break
                 fam_list[fam_i]['wife_id'] = arguments
                 fam_list[fam_i]['wife_name'] = wife_name
-            elif tag == "CHIL":
+            elif tag == "CHIL" and level == "1":
                 fam_list[fam_i]['children'].add(arguments)
         
         # print the second line
@@ -120,14 +124,22 @@ def gedcomData(indi_list, fam_list):
         #     print("<-- %s|%s|%s" % (level, tag, valid))
 
         prev_tag = tag
+        prev_lvl = level
          # print("Current indi_i: %s" % (indi_i))
     gedcom.close()
+
+
 
 if __name__ == "__main__":
     indi_list = []
     fam_list = []
+    errors = []
 
     gedcomData(indi_list, fam_list)
+
+    # Call all user stories
+    errors2 = birthBeforeMarriage(indi_list, fam_list)
+    errors = errors + errors2
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -150,3 +162,6 @@ if __name__ == "__main__":
     print(indi_table)
     print()
     print(fam_table)
+    # print all found errors and anomalies
+    for err in errors:
+        print(err)
