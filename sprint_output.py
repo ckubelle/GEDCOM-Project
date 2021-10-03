@@ -1,5 +1,5 @@
 from prettytable import PrettyTable 
-from datetime import date
+from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 
 def gedcomData(indi_list, fam_list):
@@ -29,19 +29,18 @@ def gedcomData(indi_list, fam_list):
         if arguments == "INDI" or arguments == "FAM":
             tag = splitLine[2].strip()
             arguments = splitLine[1].strip()
-
         # check if tag is valid
         valid = "N"
         if tag in validTags:
             valid = "Y"
         if (level == "1" and tag == "DATE") or (level == "2" and tag == "NAME"):
             valid = "N"
-        
         # add new individual or individual's data
         if valid == "Y":
+            # individual tags
             if tag == "INDI":
                 new_indi = {
-                    'ID': arguments,
+                    'id': arguments,
                     'name': "NA",
                     'gender': "NA", 
                     'birthday': "NA",
@@ -59,6 +58,7 @@ def gedcomData(indi_list, fam_list):
             elif tag == "SEX":
                 indi_list[indi_i]['gender']= arguments
             elif tag == "DATE":
+                # create date object from line
                 date_list = arguments.split(" ")
                 day = int(date_list[0])
                 month = months[date_list[1]]
@@ -66,21 +66,52 @@ def gedcomData(indi_list, fam_list):
                 given_date = date(year, month, day)
                 today = date.today()
                 if prev_tag == "BIRT":
-                    indi_list[indi_i]['birthday'] = arguments
+                    indi_list[indi_i]['birthday'] = given_date
                     indi_list[indi_i]['age'] = relativedelta(today, given_date).years
                 elif prev_tag == "DEAT":
-                    bdate_list = indi_list[indi_i]['birthday'].split(" ")
-                    b_day = int(bdate_list[0])
-                    b_month = months[bdate_list[1]]
-                    b_year = int (bdate_list[2])
-                    b_date = date(b_year, b_month, b_day)
-                    indi_list[indi_i]['death'] = arguments
+                    b_date = indi_list[indi_i]['birthday']
+                    indi_list[indi_i]['death'] = given_date
                     indi_list[indi_i]['alive'] = False
                     indi_list[indi_i]['age'] = relativedelta(given_date, b_date).years
+                elif prev_tag == "MARR":
+                    fam_list[fam_i]['married'] = given_date
             elif tag == "FAMS":
                 indi_list[indi_i]['spouse'].add(arguments)
             elif tag == "FAMC":
                 indi_list[indi_i]['child'].add(arguments)
+            # family tags
+            elif tag == "FAM":
+                new_fam = {
+                    'id': arguments,
+                    'married': "NA",
+                    'divorced': "NA", 
+                    'husb_id': "NA",
+                    'husb_name': "NA",
+                    'wife_id': "NA",
+                    'wife_name': "NA",
+                    'children': set()
+                }
+                fam_list.append(new_fam)
+                print("=========ADDED NEW FAM=========")
+                fam_i = fam_i + 1
+            elif tag == "HUSB":
+                husb_name = ""
+                for indi in indi_list:
+                    if indi['id'] == arguments:
+                        husb_name = indi['name']
+                        break;
+                fam_list[fam_i]['husb_id'] = arguments
+                fam_list[fam_i]['husb_name'] = husb_name
+            elif tag == "WIFE":
+                wife_name = ""
+                for indi in indi_list:
+                    if indi['id'] == arguments:
+                        wife_name = indi['name']
+                        break;
+                fam_list[fam_i]['wife_id'] = arguments
+                fam_list[fam_i]['wife_name'] = wife_name
+            elif tag == "CHIL":
+                fam_list[fam_i]['children'].add(arguments)
         
         # print the second line
         # if hasArgs == True:
@@ -98,16 +129,24 @@ if __name__ == "__main__":
 
     gedcomData(indi_list, fam_list)
 
-    # print(indi_list)
-
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
+
+    fam_table = PrettyTable()
+    fam_table.field_names = ["ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
 
     for indi in indi_list:
         if len(indi['child']) == 0:
             indi['child'] = "NA"
         if len(indi['spouse']) == 0:
             indi['spouse'] = "NA"
-        indi_table.add_row([indi['ID'], indi['name'], indi['gender'], indi['birthday'], indi['age'], indi['alive'], indi['death'], indi['child'], indi['spouse']])
+        indi_table.add_row([indi['id'], indi['name'], indi['gender'], indi['birthday'], indi['age'], indi['alive'], indi['death'], indi['child'], indi['spouse']])
+
+    for fam in fam_list:
+        if len(fam['children']) == 0:
+            fam['children'] = "NA"
+        fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
     print(indi_table)
+    print()
+    print(fam_table)
