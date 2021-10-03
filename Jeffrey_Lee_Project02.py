@@ -3,7 +3,7 @@
 
 def gedcomData():
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
-    gedcom = open("Project02_gedcom.ged")
+    gedcom = open("gedcom_testfile_1.ged")
     for line in gedcom:
         # print the first line
         print("--> %s" % (line.strip()))
