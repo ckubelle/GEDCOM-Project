@@ -148,8 +148,8 @@ if __name__ == "__main__":
     errors2 = birthBeforeMarriage(indi_list, fam_list)
     errors3 = birthBeforeDeath(indi_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
-    error4 = marrBeforeDivorce(fam_list)
-    errors = errors + errors2 + errors3 + error4 + error5 
+    errors4 = marrBeforeDivorce(fam_list)
+    errors = errors + errors2 + errors3 + errors4 + errors5 
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
