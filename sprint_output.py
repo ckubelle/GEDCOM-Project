@@ -1,7 +1,9 @@
 from prettytable import PrettyTable 
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
+from operator import itemgetter
 from user_stories.user_story_2 import birthBeforeMarriage
+from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_5 import marrBeforeDeath
 
 def gedcomData(indi_list, fam_list):
@@ -138,10 +140,14 @@ if __name__ == "__main__":
 
     gedcomData(indi_list, fam_list)
 
+    indi_list = sorted(indi_list, key=itemgetter('id'))
+    fam_list = sorted(fam_list, key=itemgetter('id'))
+
     # Call all user stories
     errors2 = birthBeforeMarriage(indi_list, fam_list)
+    errors3 = birthBeforeDeath(indi_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
-    errors = errors + errors2 + errors5
+    errors = errors + errors2 + errors3 + errors5
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
