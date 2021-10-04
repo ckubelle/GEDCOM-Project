@@ -5,6 +5,7 @@ from operator import itemgetter
 from user_stories.user_story_2 import birthBeforeMarriage
 from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_5 import marrBeforeDeath
+from user_stories.user_story_4 import marrBeforeDivorce
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -147,7 +148,8 @@ if __name__ == "__main__":
     errors2 = birthBeforeMarriage(indi_list, fam_list)
     errors3 = birthBeforeDeath(indi_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
-    errors = errors + errors2 + errors3 + errors5
+    error4 = marrBeforeDivorce(fam_list)
+    errors = errors + errors2 + errors3 + error4 + error5 
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
