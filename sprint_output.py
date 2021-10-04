@@ -6,6 +6,7 @@ from user_stories.user_story_2 import birthBeforeMarriage
 from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_5 import marrBeforeDeath
 from user_stories.user_story_4 import marrBeforeDivorce
+from user_stories.user_story_8 import birthBeforeMarriageOfParents
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -149,7 +150,8 @@ if __name__ == "__main__":
     errors3 = birthBeforeDeath(indi_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
     errors4 = marrBeforeDivorce(fam_list)
-    errors = errors + errors2 + errors3 + errors4 + errors5 
+    errors8 = birthBeforeMarriageOfParents(indi_list, fam_list)
+    errors = errors + errors2 + errors3 + errors4 + errors5 + errors8
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
