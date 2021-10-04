@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 from operator import itemgetter
+from user_stories.user_story_1 import validDate
 from user_stories.user_story_2 import birthBeforeMarriage
 from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_5 import marrBeforeDeath
@@ -17,7 +18,7 @@ def gedcomData(indi_list, fam_list):
     prev_tag = ""
     prev_lvl = ""
 
-    gedcom = open("gedcom_testfile_1.ged")
+    gedcom = open("gedcom_files/gedcom_testfile_1.ged")
     for line in gedcom:
         # print the first line
         # print("--> %s" % (line.strip()))
@@ -145,11 +146,12 @@ if __name__ == "__main__":
     fam_list = sorted(fam_list, key=itemgetter('id'))
 
     # Call all user stories
+    errors1 = validDate(indi_list, fam_list)
     errors2 = birthBeforeMarriage(indi_list, fam_list)
     errors3 = birthBeforeDeath(indi_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
     errors4 = marrBeforeDivorce(fam_list)
-    errors = errors + errors2 + errors3 + errors4 + errors5 
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
