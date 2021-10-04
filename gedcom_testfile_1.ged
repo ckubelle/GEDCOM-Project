@@ -22,7 +22,7 @@
 2 DATE 20 NOV 1942
 1 FAMS @F1@
 1 FAMS @F2@
-0 @I2@ INDI
+0 @I21@ INDI
 1 NAME Neilia /Hunter/
 2 GIVN Neilia
 2 SURN Hunter
@@ -214,7 +214,7 @@
 1 _CURRENT Y
 0 @F2@ FAM
 1 HUSB @I1@
-1 WIFE @I2@
+1 WIFE @I21@
 1 CHIL @I4@
 1 CHIL @I5@
 1 CHIL @I6@
