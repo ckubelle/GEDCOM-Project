@@ -3,6 +3,7 @@ from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 from user_stories.user_story_2 import birthBeforeMarriage
 from user_stories.user_story_5 import marrBeforeDeath
+from user_stories.user_story_4 import marrBeforeDivorce
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -141,7 +142,8 @@ if __name__ == "__main__":
     # Call all user stories
     errors2 = birthBeforeMarriage(indi_list, fam_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
-    errors = errors + errors2 + errors5
+    error4 = marrBeforeDivorce(fam_list)
+    errors = errors + errors2 + errors5 + error4
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
