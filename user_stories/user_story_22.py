@@ -1,69 +1,51 @@
 # Name: Jeffrey Lee
+# Homework 6
 # I pledge my honor that I have abided by the Stevens Honor System.
 
 # User Story 22: Unique IDs
 
 import unittest
 
-# Code for User Story
-def isIndividualIDUnique(gedcom_filename):
-    gedcom = open(gedcom_filename)
-    individualList = []
-    for line in gedcom:
-        splitLine = line.split(" ", 2)
-        level = splitLine[0].strip()
-        tag = splitLine[1].strip()
-        if len(splitLine) > 2:
-            arguments = splitLine[2].strip()
-        if arguments == "INDI" and level == "0":
-            individualList.append(tag)
-    gedcom.close()
-    for indiID in individualList:
-        if(individualList.count(indiID) != 1):
-            return False
-    return True
+# Return set of non-unique IDs based on given list (For Code Smell of Duplicated Code)
+def findNonUniqueIds(lst):
+    nonUniqueIds = set()
+    # Store all ids into its own list
+    allIds = []
+    for elem in lst:
+        allIds.append(elem["id"])
+    # Store all non-unique Ids
+    for singleId in allIds:
+        if(allIds.count(singleId) > 1):
+            nonUniqueIds.add(singleId)
+    return nonUniqueIds
 
-def isFamilyIDUnique(gedcom_filename):
-    gedcom = open(gedcom_filename)
-    familyList = []
-    for line in gedcom:
-        splitLine = line.split(" ", 2)
-        level = splitLine[0].strip()
-        tag = splitLine[1].strip()
-        if len(splitLine) > 2:
-            arguments = splitLine[2].strip()
-        if arguments == "FAM" and level == "0":
-            familyList.append(tag)
-    gedcom.close()
-    for famID in familyList:
-        if(familyList.count(famID) != 1):
-            return False
-    return True
+# Find names of the individuals with non-unique Ids (For Code Smell of Long Method w/ Too Much Code)
+def findNamesWNonUniqueIds(nonUniqueIndiIds, indi_list):
+    # Find the names of individuals with non-unique Ids
+    idWithNames = {}
+    if len(nonUniqueIndiIds) > 0:
+        for nonUniqueIndiId in nonUniqueIndiIds:
+            tmp_list = []
+            for indi in indi_list:
+                if indi["id"] == nonUniqueIndiId:
+                    tmp_list.append(indi["name"].replace("/", ""))
+            idWithNames[nonUniqueIndiId] = tmp_list
+    return idWithNames
 
-def isAllUnique(gedcom_filename):
-    indi = isIndividualIDUnique(gedcom_filename)
-    fam = isFamilyIDUnique(gedcom_filename)
-    if indi == True and fam == True:
-        return True
-    return False
 
-# Test Code
-class testCode(unittest.TestCase):
-    def test_1(self):
-        # gedcom file contains all unique individual IDs and family IDs
-        self.assertTrue(isAllUnique("gedcom_files_for_tests/GEDCOM_Test1.ged"))
-    def test_2(self):
-        # gedcom file contains all unique individual IDs but all family IDs are not unique
-        self.assertFalse(isAllUnique("gedcom_files_for_tests/GEDCOM_Test2.ged"))
-    def test_3(self):
-        # gedcom file contains all unique family IDs but all individual IDs are not unique
-        self.assertFalse(isAllUnique("gedcom_files_for_tests/GEDCOM_Test3.ged"))
-    def test_4(self):
-        # gedcom file contains both individual and family IDs that are NOT unique
-        self.assertFalse(isAllUnique("gedcom_files_for_tests/GEDCOM_Test4.ged"))
-    def test_5(self):
-        # gedcom file contains more than one individual ID that are NOT unique (duplicate of @I1@ ID and duplicate of @I2@ ID)
-        self.assertFalse(isAllUnique("gedcom_files_for_tests/GEDCOM_Test5.ged"))
-
-if __name__ == "__main__":
-    unittest.main()
+# Refactored the two code smells in this method which were the following:
+# - Duplicated code (very similar code for individual and family functionality)
+# - Long method with too much code (should extract method)
+def uniqueIds(indi_list, fam_list):
+    errorStatements = []
+    # Refactored code smell of duplicated code / very similar code for individual and family functionality
+    nonUniqueIndiIds = findNonUniqueIds(indi_list)
+    nonUniqueFamIds = findNonUniqueIds(fam_list)
+    # Refactored code smell of long method with too much code
+    namesForNonUniqueIds = findNamesWNonUniqueIds(nonUniqueIndiIds, indi_list)
+    # Add error statements
+    for key, value in namesForNonUniqueIds.items():
+        errorStatements.append("Error US22: %s all have the same individual ID (%s)." % (", ".join(value), key))
+    for nonUniqueFamId in nonUniqueFamIds:
+        errorStatements.append("Error US22: There are duplicates of the family ID %s. All family IDs should be unique." % (nonUniqueFamId))
+    return errorStatements
