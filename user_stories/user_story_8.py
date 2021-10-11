@@ -24,6 +24,6 @@ def birthBeforeMarriageOfParents(indi_list, fam_list):
 
                 if child == indi['id']:
                     if birthBeforeMarriageCheck(indi['birthday'], fam['married'], fam['divorced']):
-                        errorStatements.append(f"Error US08: Birth date of {indi['name']} ({indi['id']}) occurs before family ({fam['id']}) marriage which is ({fam['married']})) ")
+                        errorStatements.append(f"Error US08: Birth date of {indi['name']} ({indi['id']}) occurs before family ({fam['id']}) marriage which is ({fam['married']}) ")
 
     return errorStatements
