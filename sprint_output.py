@@ -20,7 +20,7 @@ def gedcomData(indi_list, fam_list):
     prev_tag = ""
     prev_lvl = ""
 
-    gedcom = open("gedcom_files/gedcom_testfile_1.ged")
+    gedcom = open("gedcom_files/gedcom_sprint1.ged")
     for line in gedcom:
         # print the first line
         # print("--> %s" % (line.strip()))
