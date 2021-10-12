@@ -11,6 +11,7 @@ def checkMaleLastNames(indi_list, fam_list):
         for child in fam['children']:
             if (isMale(child, indi_list)):
                 childLast = findLastName(child, indi_list)
+                # if son's last name is not the family name, return false
                 if (childLast != famName):
                     return False
     return True
