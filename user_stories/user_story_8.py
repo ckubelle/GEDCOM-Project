@@ -30,5 +30,5 @@ def birthBeforeMarriageOfParents(indi_list, fam_list):
                         errorStatements.append(f"Anomaly US08: Birth date of {indi['name']} ({indi['id']}) occurs before family ({fam['id']}) marriage which is ({fam['married']}) ")
                     
                     if birthBeforeDivorceCheck(indi['birthday'], fam['divorced']):
-                        errorStatements.append(f"Anomaly US08: Birth date of {indi['name']} ({indi['id']}) occurs before family ({fam['id']}) divorce which is ({fam['divorced']}) ")
+                        errorStatements.append(f"Anomaly US08: Birth date of {indi['name']} ({indi['id']}) occurs after family ({fam['id']}) divorce which is ({fam['divorced']}) ")
     return errorStatements
