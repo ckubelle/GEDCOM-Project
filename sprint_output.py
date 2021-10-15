@@ -177,12 +177,19 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
-    print("")
-    print("Individuals")
-    print(indi_table)
-    print("Families")
-    print(fam_table)
-    # print all found errors and anomalies
-    if errors is not None:
-        for err in errors:
-            print(err)
+    with open('sprint_output/sprint_output_1.txt', 'w') as f:
+        print("")
+        f.write("\n")
+        print("Individuals")
+        f.write("Individuals\n")
+        print(indi_table)
+        f.write(f'{indi_table.get_string()}\n\n')
+        print("Families")
+        f.write("Familes\n")
+        print(fam_table)
+        f.write(f'{fam_table.get_string()}\n\n')
+        # print all found errors and anomalies
+        if errors is not None:
+            for err in errors:
+                print(err)
+                f.write(f'{err}\n')
