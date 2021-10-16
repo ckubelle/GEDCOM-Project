@@ -9,6 +9,7 @@ from user_stories.user_story_5 import marrBeforeDeath
 from user_stories.user_story_4 import marrBeforeDivorce
 from user_stories.user_story_22 import uniqueIds
 from user_stories.user_story_6 import divorceBeforeDeath
+from user_stories.user_story_7 import tooOld
 from user_stories.user_story_8 import birthBeforeMarriageOfParents
 from user_stories.user_story_16 import isMaleLastNames
 
@@ -156,11 +157,12 @@ if __name__ == "__main__":
     errors4 = marrBeforeDivorce(fam_list)
     errors5 = marrBeforeDeath(indi_list, fam_list)
     errors6 = divorceBeforeDeath(indi_list, fam_list)
+    errors7 = tooOld(indi_list)
     errors8 = birthBeforeMarriageOfParents(indi_list, fam_list)
     errors16 = isMaleLastNames(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
 
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors8 + errors16 + errors22
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors16 + errors22
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
