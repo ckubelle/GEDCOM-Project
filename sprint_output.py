@@ -10,6 +10,7 @@ from user_stories.user_story_4 import marrBeforeDivorce
 from user_stories.user_story_22 import uniqueIds
 from user_stories.user_story_6 import divorceBeforeDeath
 from user_stories.user_story_8 import birthBeforeMarriageOfParents
+from user_stories.user_story_16 import isMaleLastNames
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -156,8 +157,10 @@ if __name__ == "__main__":
     errors5 = marrBeforeDeath(indi_list, fam_list)
     errors6 = divorceBeforeDeath(indi_list, fam_list)
     errors8 = birthBeforeMarriageOfParents(indi_list, fam_list)
+    errors16 = isMaleLastNames(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors8 + errors22
+
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors8 + errors16 + errors22
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -177,12 +180,19 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
-    print("")
-    print("Individuals")
-    print(indi_table)
-    print("Families")
-    print(fam_table)
-    # print all found errors and anomalies
-    if errors is not None:
-        for err in errors:
-            print(err)
+    with open('sprint_output/sprint_output_1.txt', 'w') as f:
+        print("")
+        f.write("\n")
+        print("Individuals")
+        f.write("Individuals\n")
+        print(indi_table)
+        f.write(f'{indi_table.get_string()}\n\n')
+        print("Families")
+        f.write("Familes\n")
+        print(fam_table)
+        f.write(f'{fam_table.get_string()}\n\n')
+        # print all found errors and anomalies
+        if errors is not None:
+            for err in errors:
+                print(err)
+                f.write(f'{err}\n')
