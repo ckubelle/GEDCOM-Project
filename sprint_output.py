@@ -22,7 +22,7 @@ def gedcomData(indi_list, fam_list):
     prev_tag = ""
     prev_lvl = ""
 
-    gedcom = open("gedcom_files/gedcom_testfile_1.ged")
+    gedcom = open("gedcom_files/gedcom_sprint2.ged")
     for line in gedcom:
         # print the first line
         # print("--> %s" % (line.strip()))
@@ -180,7 +180,7 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
-    with open('sprint_output/sprint_output_1.txt', 'w') as f:
+    with open('sprint_output/sprint_output_2.txt', 'w') as f:
         print("")
         f.write("\n")
         print("Individuals")
