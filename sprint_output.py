@@ -190,7 +190,7 @@ if __name__ == "__main__":
         print(indi_table)
         f.write(f'{indi_table.get_string()}\n\n')
         print("Families")
-        f.write("Familes\n")
+        f.write("Families\n")
         print(fam_table)
         f.write(f'{fam_table.get_string()}\n\n')
         # print all found errors and anomalies
