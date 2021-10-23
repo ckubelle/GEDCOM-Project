@@ -50,5 +50,5 @@ class TestUserStory9(unittest.TestCase):
             {'id': '@F04@', 'married': datetime.date(2002, 11, 30), 'divorced': 'NA', 'husb_id': '@I04@', 'husb_name': 'Beau /Biden/', 'wife_id': '@I09@', 'wife_name': 'Hallie /Olivere/', 'children': {'@I11@', '@I10@'}}
             ]),
             
-            ["Error US09: Birth date of child Neilia /Hunter/ (@I02@) occurs after 9 months after death of father Joseph /Biden/ (@I01@) in family (@F01@). The birthday of child is 2018-11-28, and the death date of father is (1972-12-18).",
-            "Error US09: Birth date of child Neilia /Hunter/ (@I02@) occurs after death of mother Jill /Jacobs/ (@I03@) in family (@F01@). The birthday of child is 2018-11-28, and the death date of mother is (2015-05-30)."])
+            ["Error US09: Birth date of child Neilia /Hunter/ (@I02@) occurs after 9 months after death of father Joseph /Biden/ (@I01@) in family (@F01@). The birthday of child is 2018-11-28, and the death date of father is 1972-12-18.",
+            "Error US09: Birth date of child Neilia /Hunter/ (@I02@) occurs after death of mother Jill /Jacobs/ (@I03@) in family (@F01@). The birthday of child is 2018-11-28, and the death date of mother is 2015-05-30."])

@@ -29,7 +29,7 @@ def birthBeforeDeathOfParents(indi_list, fam_list):
             for indi in indi_list:
                 if child == indi['id']:
                     if (isbirthBeforeFatherDeath(indi['birthday'], fatherDeathDate) == False):
-                        errorStatements.append(f"Error US09: Birth date of child {indi['name']} ({indi['id']}) occurs after 9 months after death of father {fam['husb_name']} ({fam['husb_id']}) in family ({fam['id']}). The birthday of child is {indi['birthday']}, and the death date of father is ({fatherDeathDate}).")
+                        errorStatements.append(f"Error US09: Birth date of child {indi['name']} ({indi['id']}) occurs after 9 months after death of father {fam['husb_name']} ({fam['husb_id']}) in family ({fam['id']}). The birthday of child is {indi['birthday']}, and the death date of father is {fatherDeathDate}.")
                     if (isbirthBeforeMotherDeath(indi['birthday'], motherDeathDate) == False):
-                        errorStatements.append(f"Error US09: Birth date of child {indi['name']} ({indi['id']}) occurs after death of mother {fam['wife_name']} ({fam['wife_id']}) in family ({fam['id']}). The birthday of child is {indi['birthday']}, and the death date of mother is ({motherDeathDate}).")
+                        errorStatements.append(f"Error US09: Birth date of child {indi['name']} ({indi['id']}) occurs after death of mother {fam['wife_name']} ({fam['wife_id']}) in family ({fam['id']}). The birthday of child is {indi['birthday']}, and the death date of mother is {motherDeathDate}.")
     return errorStatements
