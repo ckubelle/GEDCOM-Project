@@ -13,15 +13,26 @@ def isMarrAfter14(indi_list, fam):
         return false;
     # else, find the marriage date
     else:
-        marrMonth = fam["married"].strftime("%m")
-        marrDay = fam["married"].strftime("%d")
-        marrYear = fam["married"].strftime("%Y")
+        marrDate = fam["married"]
+        # get the spouses birthdays
+        husbDate = getBirthday(indi_list, fam["husb_id"])
+        wifeDate = getBirthday(indi_list, fam["wife_id"])
+        # if difference between birthday and marriage date is less than 14, false
+        if diffDate(marrDate, husbDate) < 14 or diffDate(marrDate, wifeDate) < 14:
+            return false
+        else:
+            return true
+        
+# return difference in given dates by years
+def diffDates(date1, date2):
+    # calculate absolute value of difference, in days
+    diff = abs(date1 - date2).days
+    # divide by 365 to find value in years
+    return diff/365
 
-# return given ind's birthday month, day, and year in that order
-def getIndBirthday(indi_list, ind_id):
+# return given ind's birthday
+def getBirthday(indi_list, ind_id):
     for ind in indi_list:
       if ind["id"] == ind_id:
-          month = ind["birthday"].strftime("%m")
-          day = ind["birthday"].strftime("%d")
-          year = ind["birthday"].strftime("%Y")
-    return month, day, year
+          birthday = ind["birthday"]
+    return birthday
