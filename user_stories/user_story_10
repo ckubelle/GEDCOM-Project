@@ -1,8 +1,0 @@
-# User Story 10 - Marriage should be at least 14 years after 
-# birth of both spouses 
-
-# return error statements if marriage occurs before age 14
-def isMarrAfter14(indi_list, fam_list):
-
-# return true if marriage in given fam occurred after spouses were age 14
-def checkMarrAfter14(indi_list, fam):
