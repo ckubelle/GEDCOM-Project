@@ -4,7 +4,7 @@
 import datetime
 
 # return error statements if marriage occurs before age 14
-def checkMarrBefore14(indi_list, fam_list):
+def marrBefore14(indi_list, fam_list):
     errorStatements = []
     for fam in fam_list:
         if (isMarrBefore14(indi_list, fam)):
@@ -15,7 +15,7 @@ def checkMarrBefore14(indi_list, fam_list):
 def isMarrBefore14(indi_list, fam):
     # if no marriage, return false
     if fam["married"] == "NA":
-        return false;
+        return False
     # else, find the marriage date
     else:
         marrDate = fam["married"]
@@ -23,10 +23,10 @@ def isMarrBefore14(indi_list, fam):
         husbDate = getBirthday(indi_list, fam["husb_id"])
         wifeDate = getBirthday(indi_list, fam["wife_id"])
         # if difference between birthday and marriage date is less than 14, true
-        if diffDate(marrDate, husbDate) < 14.00 or diffDate(marrDate, wifeDate) < 14.00:
-            return true
+        if diffDates(marrDate, husbDate) < 14.00 or diffDates(marrDate, wifeDate) < 14.00:
+            return True
         else:
-            return false
+            return False
         
 # return difference in given dates by years
 def diffDates(date1, date2):
