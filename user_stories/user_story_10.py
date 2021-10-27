@@ -8,7 +8,7 @@ def checkMarrBefore14(indi_list, fam_list):
     errorStatements = []
     for fam in fam_list:
         if (isMarrBefore14(indi_list, fam)):
-            errorStatements.append("Error US10: Marriage date in Family %s occurs before both spouses are over 14 years of age." % (fam["id"]))
+            errorStatements.append("Error US10: Marriage date in Family %s occured before both spouses were over 14 years of age." % (fam["id"]))
     return errorStatements
 
 # return true if marriage in given fam occurred before spouses were age 14
