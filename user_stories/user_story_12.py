@@ -7,9 +7,26 @@ from dateutil import relativedelta
 # return error statements if parents are too old given the requirements
 def parentsTooOld(indi_list, fam_list):
     errorStatements = []
+    for fam in fam_list:
+        if checkParentsTooOld(indi_list, fam_list, fam):
+            errorStatements.append("Error US12: Age of parent in Family %s is too old for their children." % (fam["id"]))
+    return errorStatements
 
 # return true if parents in given fam are too old 
-def checkParentsTooOld(indi_list, fam):
+def checkParentsTooOld(indi_list, fam_list, fam):
+    # if no children, return false
+    if len(fam["children"]) == 0:
+        return False
+    # else, get youngest child and parent birthdays
+    else:
+        childBday = getYoungestBday(indi_list, fam)
+        husbBday = getBirthday(indi_list, fam["husb_id"])
+        wifeBday = getBirthday(indi_list, fam["wife_id"])
+        # if either parent is too old, return true
+        if diffDates(childBday, husbBday) > 80 or diffDates(childBday, wifeBday) > 60:
+            return True
+        else:
+            return False
 
 # return birthday of given fam's youngest child
 def getYoungestBday(indi_list, fam):
