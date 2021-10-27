@@ -12,20 +12,18 @@ def parentsTooOld(indi_list, fam_list):
 def checkParentsTooOld(indi_list, fam):
 
 # return birthday of given fam's youngest child
-def getYoungestBday(fam_list, fam_id):
+def getYoungestBday(indi_list, fam):
     # initialize default youngest birthday
-    youngBday = date(9999, 9, 9)
-    for fam in fam_list:
-        if fam["id"] == fam_id:
-            # loop through all children
-            for child in fam["children"]:
-                # check if this is first child
-                if youngBday == date(9999, 9, 9):
-                    youngBday = child["birthday"]
-                # if not, compare and find youngest birthday (most recent date is "greater")
-                else:
-                    if child["birthday"] >= youngBday:
-                        youngBday = child["birthday"]
+    youngBday = date(1900, 9, 9)
+    for child in fam["children"]:
+        currentBday = getBirthday(indi_list, child)
+        # check if this is first child
+        if youngBday == date(1900, 9, 9):
+            youngBday = currentBday
+        # if not, compare and find youngest birthday (most recent date is "greater")
+        else:
+            if currentBday > youngBday:
+                youngBday = currentBday
     return youngBday
 
 # return difference in given dates by years
