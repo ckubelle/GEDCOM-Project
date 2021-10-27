@@ -5,3 +5,15 @@ python:
 # command to run tests
 script:
  - python -m unittest test_user_stories.test_user_story_1
+ - python -m unittest test_user_stories.test_user_story_2
+ - python -m unittest test_user_stories.test_user_story_3
+ - python -m unittest test_user_stories.test_user_story_4
+ - python -m unittest test_user_stories.test_user_story_6
+ - python -m unittest test_user_stories.test_user_story_7
+ - python -m unittest test_user_stories.test_user_story_8
+ - python -m unittest test_user_stories.test_user_story_9
+ - python -m unittest test_user_stories.test_user_story_13
+ - python -m unittest test_user_stories.test_user_story_14
+ - python -m unittest test_user_stories.test_user_story_15
+ - python -m unittest test_user_stories.test_user_story_16
+ - python -m unittest test_user_stories.test_user_story_22
