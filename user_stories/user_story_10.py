@@ -1,7 +1,8 @@
 # User Story 10 - Marriage should be at least 14 years after 
 # birth of both spouses
 
-import datetime
+from datetime import date, datetime
+from dateutil import relativedelta
 
 # return error statements if marriage occurs before age 14
 def marrBefore14(indi_list, fam_list):
@@ -30,10 +31,10 @@ def isMarrBefore14(indi_list, fam):
         
 # return difference in given dates by years
 def diffDates(date1, date2):
-    # calculate absolute value of difference, in days
-    diff = abs(date1 - date2).days
-    # divide by 365 to find value in years
-    return diff/365
+    # calculate difference in time using relative delta
+    diff = relativedelta.relativedelta(date1, date2)
+    # return absolute value of difference, in years
+    return abs(diff.years)
 
 # return given ind's birthday
 def getBirthday(indi_list, ind_id):
