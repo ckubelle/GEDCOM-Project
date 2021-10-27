@@ -52,6 +52,7 @@ def diffDates(date1, date2):
 
 # return given ind's birthday
 def getBirthday(indi_list, ind_id):
+    birthday = date(1900, 9, 9)
     for ind in indi_list:
       if ind["id"] == ind_id:
           birthday = ind["birthday"]
