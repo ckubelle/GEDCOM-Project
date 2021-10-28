@@ -8,12 +8,12 @@ from dateutil import relativedelta
 def parentsTooOld(indi_list, fam_list):
     errorStatements = []
     for fam in fam_list:
-        if checkParentsTooOld(indi_list, fam_list, fam):
+        if checkParentsTooOld(indi_list, fam):
             errorStatements.append("Error US12: Age of parent in Family %s is too old for their children." % (fam["id"]))
     return errorStatements
 
 # return true if parents in given fam are too old 
-def checkParentsTooOld(indi_list, fam_list, fam):
+def checkParentsTooOld(indi_list, fam):
     # if no children, return false
     if len(fam["children"]) == 0:
         return False
