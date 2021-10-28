@@ -23,7 +23,10 @@ def isMarrBefore14(indi_list, fam):
         # get the spouses birthdays
         husbDate = getBirthday(indi_list, fam["husb_id"])
         wifeDate = getBirthday(indi_list, fam["wife_id"])
-        # if difference between birthday and marriage date is less than 14, true
+        # if marriage date occurred before birth date, return true
+        if marrDate.year < husbDate.year or marrDate.year < husbDate.year:
+            return True
+        # if difference between birthday and marriage date is less than 14, return true
         if diffDates(marrDate, husbDate) < 14.00 or diffDates(marrDate, wifeDate) < 14.00:
             return True
         else:
