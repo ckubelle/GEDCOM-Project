@@ -26,6 +26,7 @@ def checkMaleLastNames(fam, indi_list):
 
 # return true if given ind is male
 def isMale(indi_id, indi_list):
+    check = ''
     for indi in indi_list:
         if indi['id'] == indi_id:
             check = indi['gender'] == 'M'

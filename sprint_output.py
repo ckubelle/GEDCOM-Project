@@ -14,6 +14,8 @@ from user_stories.user_story_7 import tooOld
 from user_stories.user_story_8 import birthBeforeMarriageOfParents
 from user_stories.user_story_13 import sibilingSpacing
 from user_stories.user_story_16 import isMaleLastNames
+from user_stories.user_story_10 import marrBefore14
+from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 
@@ -164,13 +166,15 @@ if __name__ == "__main__":
     errors7 = tooOld(indi_list)
     errors8 = birthBeforeMarriageOfParents(indi_list, fam_list)
     errors9 = birthBeforeDeathOfParents(indi_list, fam_list)
+    errors10 = marrBefore14(indi_list, fam_list)
+    errors12 = parentsTooOld(indi_list, fam_list)
     errors13 = sibilingSpacing(indi_list, fam_list)
     errors14 = multipleBirths(indi_list, fam_list)
     errors15 = fewerThanFifteenSiblings(fam_list)
     errors16 = isMaleLastNames(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
 
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors13 + errors14 + errors15 + errors16 + errors22
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors22
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
