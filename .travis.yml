@@ -11,10 +11,13 @@ script:
   - python -m unittest test_user_stories.test_user_story_2
   - python -m unittest test_user_stories.test_user_story_3
   - python -m unittest test_user_stories.test_user_story_4
+  - python -m unittest test_user_stories.test_user_story_5
   - python -m unittest test_user_stories.test_user_story_6
   - python -m unittest test_user_stories.test_user_story_7
   - python -m unittest test_user_stories.test_user_story_8
   - python -m unittest test_user_stories.test_user_story_9
+  - python -m unittest test_user_stories.test_user_story_10
+  - python -m unittest test_user_stories.test_user_story_12
   - python -m unittest test_user_stories.test_user_story_13
   - python -m unittest test_user_stories.test_user_story_14
   - python -m unittest test_user_stories.test_user_story_15
