@@ -1,0 +1,27 @@
+# Leena Domadia
+# User Story 21 - Correct Gender for Role
+# I pledge my Honor that I have abided by the Stevens Honor System - Leena Domadia
+
+def isCorrectGenderHusb(indi):
+    if indi['gender'] == "M":
+        return True
+    return False
+
+def isCorrectGenderWife(indi):
+    if indi['gender'] == "F":
+        return True
+    return False
+
+# def correctGender(indi_list, fam_list):
+#     error_statements = []
+#     husb_list = []
+#     wife_list = []
+#     # get all husb and wife ids
+#     for fam in fam_list:
+#         husb_list.append(fam['husb_id'])
+#         wife_list.append(fam['wife_id'])
+#     for husb in husb_list:
+#         for indi in indi_list:
+#             if indi['id'] == husb:
+
+    
