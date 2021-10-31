@@ -12,16 +12,24 @@ def isCorrectGenderWife(indi):
         return True
     return False
 
-# def correctGender(indi_list, fam_list):
-#     error_statements = []
-#     husb_list = []
-#     wife_list = []
-#     # get all husb and wife ids
-#     for fam in fam_list:
-#         husb_list.append(fam['husb_id'])
-#         wife_list.append(fam['wife_id'])
-#     for husb in husb_list:
-#         for indi in indi_list:
-#             if indi['id'] == husb:
-
+def correctGender(indi_list, fam_list):
+    error_statements = []
+    husb_list = []
+    wife_list = []
+    # get all husb and wife ids
+    for fam in fam_list:
+        husb_list.append(fam['husb_id'])
+        wife_list.append(fam['wife_id'])
+    # check for errors
+    for husb in husb_list:
+        for indi in indi_list:
+            if indi['id'] == husb:
+                if not isCorrectGenderHusb(indi):
+                    error_statements.append(f"Error US21: {indi['name']} ({indi['id']}) is male but is the wife in Family {indi['spouse']}")
+    for wife in wife_list:
+        for indi in indi_list:
+            if indi['id'] == wife:
+                if not isCorrectGenderWife(indi):
+                    error_statements.append(f"Error US21: {indi['name']} ({indi['id']}) is female but is the husband in Family {indi['spouse']}")
+    return error_statements
     
