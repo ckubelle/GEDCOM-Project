@@ -19,6 +19,7 @@ from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 from user_stories.user_story_18 import siblingsNotMarried
+from user_stories.user_story_21 import correctGender
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -30,7 +31,7 @@ def gedcomData(indi_list, fam_list):
     prev_tag = ""
     prev_lvl = ""
 
-    gedcom = open("gedcom_files/gedcom_sprint2.ged")
+    gedcom = open("gedcom_files/gedcom_sprint3.ged")
     for line in gedcom:
         # print the first line
         # print("--> %s" % (line.strip()))
@@ -174,9 +175,10 @@ if __name__ == "__main__":
     errors15 = fewerThanFifteenSiblings(fam_list)
     errors16 = isMaleLastNames(indi_list, fam_list)
     errors18 = siblingsNotMarried(indi_list, fam_list)
+    errors21 = correctGender(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
 
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors18 + errors22
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors18 + errors21 + errors22
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -196,7 +198,7 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
-    with open('sprint_output/sprint_output_2.txt', 'w') as f:
+    with open('sprint_output/sprint_output_3.txt', 'w') as f:
         print("")
         f.write("\n")
         print("Individuals")
