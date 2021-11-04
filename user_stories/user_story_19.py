@@ -23,8 +23,8 @@ def firstCousinsNotMarry(fam_list):
                                 for fam3 in fam_list:
                                     if (fam2 != fam3) and (fam3['husb_id'] == child2 or fam3['wife_id'] == child2):
                                         sibling2 = fam3['children']
-                                        print(f'Sibling 1: {sibling1}')
-                                        print(f'Sibling 2: {sibling2}')
+                                        # print(f'Sibling 1: {sibling1}')
+                                        # print(f'Sibling 2: {sibling2}')
                                         for fam4 in fam_list:
                                             if isFirstCousinsMarry(fam4, sibling1, sibling2):
                                                 error_statements.append(f"Error US19: {fam4['husb_name']} ({fam4['husb_id']}) and {fam4['wife_name']} ({fam4['wife_id']}) in Family {fam4['id']} are first cousins.")
