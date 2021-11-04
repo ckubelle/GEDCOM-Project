@@ -19,6 +19,7 @@ from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 from user_stories.user_story_18 import siblingsNotMarried
+from user_stories.user_story_19 import firstCousinsNotMarry
 from user_stories.user_story_21 import correctGender
 
 def gedcomData(indi_list, fam_list):
@@ -175,10 +176,11 @@ if __name__ == "__main__":
     errors15 = fewerThanFifteenSiblings(fam_list)
     errors16 = isMaleLastNames(indi_list, fam_list)
     errors18 = siblingsNotMarried(indi_list, fam_list)
+    errors19 = firstCousinsNotMarry(fam_list)
     errors21 = correctGender(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
 
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors18 + errors21 + errors22
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors18 + errors19 + errors21 + errors22
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
