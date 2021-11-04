@@ -18,5 +18,5 @@ def firstCousinsNotMarry(fam_list):
                     cousins.append(child)
                     for fam3 in fam_list:
                         if isFirstCousinsMarry(fam3, cousins):
-                            error_statements.append(f"ERROR US19: Husband {fam3['husb_id']} and Wife {fam3['wife_id']} in Family {fam3['id']} are first cousins.")
+                            error_statements.append(f"ERROR US19: {fam3['husb_name']} ({fam3['husb_id']}) and {fam3['wife_name']} ({fam3['wife_id']}) in Family {fam3['id']} are first cousins.")
     return error_statements
