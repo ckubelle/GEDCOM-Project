@@ -5,6 +5,8 @@ from operator import itemgetter
 from user_stories.user_story_1 import validDate
 from user_stories.user_story_14 import multipleBirths
 from user_stories.user_story_2 import birthBeforeMarriage
+from user_stories.user_story_23 import uniqueNameAndBirth
+from user_stories.user_story_25 import uniqueNameAndBirthInFam
 from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_5 import marrBeforeDeath
 from user_stories.user_story_4 import marrBeforeDivorce
@@ -179,8 +181,11 @@ if __name__ == "__main__":
     errors18 = siblingsNotMarried(indi_list, fam_list)
     errors21 = correctGender(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
-
+    errors23 = uniqueNameAndBirth(indi_list)
+    errors25 = uniqueNameAndBirthInFam(indi_list, fam_list)
     errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors17 + errors18 + errors21 + errors22
+    errors += errors23
+    errors += errors25
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
