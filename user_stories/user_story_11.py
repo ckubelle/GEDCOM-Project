@@ -17,18 +17,20 @@ def checkBigamy(indi_list, fam_list, fam):
     if fam["married"] == "NA":
         return False
     else:
-        # get marriage start date
+        # get start of current marriage
         currentMarr = fam["married"]
         # check if spouses are in other marriages
         for fam2 in fam_list:
             if fam2 != fam:
                 if fam2["husb_id"] == fam["husb_id"] or fam2["wife_id"] == fam["wife_id"]:
-                    # if start of current marriage occured before end of other, return true
-                    if (currentMarr < getEndMarr(indi_list, fam2)):
+                    endOther = getEndMarr(indi_list, fam2)
+                    # if current marriage started before end of other marriage, return true
+                    if (currentMarr > endOther):
                         return True
                     else:
-                        return False 
-                    
+                        return False  
+        # if no other marriage found, return false
+        return False
 # return end of marriage date or date(3000, 1, 1) if none
 def getEndMarr(indi_list, fam):
     # if no divorce, endOfMarr is whichever spouse died first, or date(3000, 1, 1) for default
