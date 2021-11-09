@@ -5,6 +5,8 @@ from operator import itemgetter
 from user_stories.user_story_1 import validDate
 from user_stories.user_story_14 import multipleBirths
 from user_stories.user_story_2 import birthBeforeMarriage
+from user_stories.user_story_23 import uniqueNameAndBirth
+from user_stories.user_story_25 import uniqueNameAndBirthInFam
 from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_5 import marrBeforeDeath
 from user_stories.user_story_4 import marrBeforeDivorce
@@ -19,6 +21,10 @@ from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_11 import isBigamy
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
+from user_stories.user_story_18 import siblingsNotMarried
+from user_stories.user_story_19 import firstCousinsNotMarry
+from user_stories.user_story_21 import correctGender
+from user_stories.user_story_17 import parentsMarriedToDescendants
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -30,7 +36,7 @@ def gedcomData(indi_list, fam_list):
     prev_tag = ""
     prev_lvl = ""
 
-    gedcom = open("gedcom_files/gedcom_sprint2.ged")
+    gedcom = open("gedcom_files/gedcom_sprint3.ged")
     for line in gedcom:
         # print the first line
         # print("--> %s" % (line.strip()))
@@ -204,7 +210,7 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
-    with open('sprint_output/sprint_output_2.txt', 'w') as f:
+    with open('sprint_output/sprint_output_3.txt', 'w') as f:
         print("")
         f.write("\n")
         print("Individuals")

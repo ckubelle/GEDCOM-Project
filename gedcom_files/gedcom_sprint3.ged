@@ -22,6 +22,14 @@
 2 DATE 20 NOV 1942
 1 FAMS @F01@
 1 FAMS @F02@
+0 @I36@ INDI
+1 NAME Joseph /Biden/
+2 GIVN Joseph
+2 SURN Biden
+2 _MARNM Biden
+1 SEX M
+1 BIRT
+2 DATE 20 NOV 1942
 0 @I02@ INDI
 1 NAME Neilia /Hunter/
 2 GIVN Neilia
@@ -54,6 +62,7 @@
 1 DEAT Y
 2 DATE 30 MAY 2015
 1 FAMS @F04@
+1 FAMS @F12@
 1 FAMC @F02@
 0 @I05@ INDI
 1 NAME Hunter /NotBiden/
@@ -106,6 +115,7 @@
 1 BIRT
 2 DATE 30 NOV 1972
 1 FAMS @F04@
+1 FAMS @F09@
 0 @I10@ INDI
 1 NAME Natalie /Biden/
 2 GIVN Natalie
@@ -114,6 +124,7 @@
 1 SEX F
 1 BIRT
 2 DATE 4 OCT 2015
+1 FAMS @F11@
 1 FAMC @F04@
 0 @I11@ INDI
 1 NAME Robert /Biden/
@@ -123,6 +134,7 @@
 1 SEX M
 1 BIRT
 2 DATE 10 MAR 2016
+1 FAMS @F09@
 1 FAMC @F04@
 0 @I12@ INDI
 1 NAME Kathleen /Buhle/
@@ -141,6 +153,7 @@
 1 SEX F
 1 BIRT
 2 DATE 10 MAR 1993
+1 FAMS @F12@
 1 FAMC @F06@
 0 @I14@ INDI
 1 NAME Finnegan /Biden/
@@ -213,6 +226,7 @@
 1 SEX M
 1 BIRT
 2 DATE 28 MAR 2020
+1 FAMS @F11@
 1 FAMC @F05@
 0 @I23@ INDI
 1 NAME Chris /Biden/
@@ -251,8 +265,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I27@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Bowtie /Biden/
+2 GIVN Bowtie
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -260,8 +274,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I28@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Macaroni /Biden/
+2 GIVN Macaroni
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -269,8 +283,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I29@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Penne /Biden/
+2 GIVN Penne
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -278,8 +292,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I30@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Alfredo /Biden/
+2 GIVN Alfredo
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -287,8 +301,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I31@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Linguini /Biden/
+2 GIVN Linguini
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -296,8 +310,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I32@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Guy /Biden/
+2 GIVN Guy
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -305,8 +319,8 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I33@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Billiam /Biden/
+2 GIVN Billiam
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
@@ -314,22 +328,24 @@
 2 DATE 28 MAR 2020
 1 FAMC @F05@
 0 @I34@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Godspeed /Biden/
+2 GIVN Godspeed
 2 SURN Biden
 2 _MARNM Biden
 1 SEX M
 1 BIRT
 2 DATE 28 MAR 2020
+1 FAMS @F10@
 1 FAMC @F05@
 0 @I35@ INDI
-1 NAME Olaf /Biden/
-2 GIVN Olaf
+1 NAME Renesme /Biden/
+2 GIVN Renesme
 2 SURN Biden
 2 _MARNM Biden
-1 SEX M
+1 SEX F
 1 BIRT
 2 DATE 28 MAR 2020
+1 FAMS @F10@
 1 FAMC @F05@
 0 @I19@ INDI
 1 NAME Bill /Stevenson/
@@ -424,5 +440,29 @@
 1 WIFE @I07@
 1 MARR
 2 DATE 2 JUN 1912
+1 _CURRENT Y
+0 @F09@ FAM
+1 HUSB @I11@
+1 WIFE @I09@
+1 MARR
+2 DATE 2 JUN 2020
+1 _CURRENT Y
+0 @F10@ FAM
+1 HUSB @I35@
+1 WIFE @I34@
+1 MARR
+2 DATE 2 JUN 2020
+1 _CURRENT Y
+0 @F11@ FAM
+1 HUSB @I22@
+1 WIFE @I10@
+1 MARR
+2 DATE 2 JUN 2020
+1 _CURRENT Y
+0 @F12@ FAM
+1 HUSB @I04@
+1 WIFE @I14@
+1 MARR
+2 DATE 2 JUN 2020
 1 _CURRENT Y
 0 TRLR
