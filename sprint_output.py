@@ -18,6 +18,7 @@ from user_stories.user_story_13 import sibilingSpacing
 from user_stories.user_story_16 import isMaleLastNames
 from user_stories.user_story_10 import marrBefore14
 from user_stories.user_story_12 import parentsTooOld
+from user_stories.user_story_11 import isBigamy
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 from user_stories.user_story_18 import siblingsNotMarried
@@ -173,6 +174,7 @@ if __name__ == "__main__":
     errors8 = birthBeforeMarriageOfParents(indi_list, fam_list)
     errors9 = birthBeforeDeathOfParents(indi_list, fam_list)
     errors10 = marrBefore14(indi_list, fam_list)
+    errors11 = isBigamy(indi_list, fam_list)
     errors12 = parentsTooOld(indi_list, fam_list)
     errors13 = sibilingSpacing(indi_list, fam_list)
     errors14 = multipleBirths(indi_list, fam_list)
@@ -186,10 +188,10 @@ if __name__ == "__main__":
     errors23 = uniqueNameAndBirth(indi_list)
     errors25 = uniqueNameAndBirthInFam(indi_list, fam_list)
     
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors12 + errors13 + errors14 + errors15 + errors16 + errors17 + errors18 + errors19 + errors21 + errors22
+    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors11 + errors12 + errors13 + errors14 + errors15 + errors16 + errors17 + errors18 + errors19 + errors21 + errors22
     errors += errors23
     errors += errors25
-
+    
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
 
