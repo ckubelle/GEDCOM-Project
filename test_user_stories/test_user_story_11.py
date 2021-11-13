@@ -16,3 +16,10 @@ class TestUserStory11(unittest.TestCase):
     test_div = {'id': '@F02@', 'married': date(1950, 6, 17), 'divorced': date(1970, 6, 17), 'husb_id': '@I01@', 'husb_name': 'Joseph /Biden/', 'wife_id': '@I02@', 'wife_name': 'Neilia /Hunter/', 'children': set()}
     test_husb = {'id': '@F03@', 'married': date(1950, 6, 17), 'divorced': 'NA', 'husb_id': '@I04@', 'husb_name': 'Joseph /Biden/', 'wife_id': '@I02@', 'wife_name': 'Neilia /Hunter/', 'children': set()}
     test_wife = {'id': '@F03@', 'married': date(1950, 6, 17), 'divorced': 'NA', 'husb_id': '@I01@', 'husb_name': 'Joseph /Biden/', 'wife_id': '@I05@', 'wife_name': 'Neilia /Hunter/', 'children': set()}
+    test_famlist = [test_none, test_div, test_husb, test_wife]
+    
+     def test_get_End_Marr(self):
+        self.assertEqual(user_story_11.getEndMarr(self.test_indi, self.test_none), date(3000, 1, 1))
+        self.assertEqual(user_story_11.getEndMarr(self.test_indi, self.test_div), date(1970, 6, 17))
+        self.assertEqual(user_story_11.getEndMarr(self.test_indi, self.test_husb), date(1960, 2, 20))
+        self.assertEqual(user_story_11.getEndMarr(self.test_indi, self.test_wife), date(1960, 2, 20))
