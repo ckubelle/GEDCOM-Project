@@ -19,7 +19,7 @@ from user_stories.user_story_16 import isMaleLastNames
 from user_stories.user_story_10 import marrBefore14
 from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_11 import isBigamy
-from user_stories.user_story_20 import isAuntOrUnc
+from user_stories.user_story_20 import isAuntUnc
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 from user_stories.user_story_18 import siblingsNotMarried
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     errors17 = parentsMarriedToDescendants(fam_list)
     errors18 = siblingsNotMarried(indi_list, fam_list)
     errors19 = firstCousinsNotMarry(fam_list)
-    errors20 = isAuntOrUnc(indi_list, fam_list)
+    errors20 = isAuntUnc(indi_list, fam_list)
     errors21 = correctGender(indi_list, fam_list)
     errors22 = uniqueIds(indi_list, fam_list)
     errors23 = uniqueNameAndBirth(indi_list)
