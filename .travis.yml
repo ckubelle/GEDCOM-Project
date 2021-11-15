@@ -29,3 +29,5 @@ script:
   - python -m unittest test_user_stories.test_user_story_20
   - python -m unittest test_user_stories.test_user_story_21
   - python -m unittest test_user_stories.test_user_story_22
+  - python -m unittest test_user_stories.test_user_story_23
+  - python -m unittest test_user_stories.test_user_story_25
