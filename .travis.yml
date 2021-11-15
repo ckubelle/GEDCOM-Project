@@ -17,6 +17,7 @@ script:
   - python -m unittest test_user_stories.test_user_story_8
   - python -m unittest test_user_stories.test_user_story_9
   - python -m unittest test_user_stories.test_user_story_10
+  - python -m unittest test_user_stories.test_user_story_11
   - python -m unittest test_user_stories.test_user_story_12
   - python -m unittest test_user_stories.test_user_story_13
   - python -m unittest test_user_stories.test_user_story_14
@@ -25,5 +26,6 @@ script:
   - python -m unittest test_user_stories.test_user_story_17
   - python -m unittest test_user_stories.test_user_story_18
   - python -m unittest test_user_stories.test_user_story_19
+  - python -m unittest test_user_stories.test_user_story_20
   - python -m unittest test_user_stories.test_user_story_21
   - python -m unittest test_user_stories.test_user_story_22
