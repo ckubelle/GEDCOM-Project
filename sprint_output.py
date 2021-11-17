@@ -26,6 +26,7 @@ from user_stories.user_story_18 import siblingsNotMarried
 from user_stories.user_story_19 import firstCousinsNotMarry
 from user_stories.user_story_21 import correctGender
 from user_stories.user_story_17 import parentsMarriedToDescendants
+from user_stories.user_story_24 import uniqueFamily
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -37,7 +38,7 @@ def gedcomData(indi_list, fam_list):
     prev_tag = ""
     prev_lvl = ""
 
-    gedcom = open("gedcom_files/gedcom_sprint3.ged")
+    gedcom = open("gedcom_files/gedcom_sprint4.ged")
     for line in gedcom:
         # print the first line
         # print("--> %s" % (line.strip()))
@@ -165,34 +166,31 @@ if __name__ == "__main__":
     fam_list = sorted(fam_list, key=itemgetter('id'))
 
     # Call all user stories
-    errors1 = validDate(indi_list, fam_list)
-    errors2 = birthBeforeMarriage(indi_list, fam_list)
-    errors3 = birthBeforeDeath(indi_list)
-    errors4 = marrBeforeDivorce(fam_list)
-    errors5 = marrBeforeDeath(indi_list, fam_list)
-    errors6 = divorceBeforeDeath(indi_list, fam_list)
-    errors7 = tooOld(indi_list)
-    errors8 = birthBeforeMarriageOfParents(indi_list, fam_list)
-    errors9 = birthBeforeDeathOfParents(indi_list, fam_list)
-    errors10 = marrBefore14(indi_list, fam_list)
-    errors11 = isBigamy(indi_list, fam_list)
-    errors12 = parentsTooOld(indi_list, fam_list)
-    errors13 = sibilingSpacing(indi_list, fam_list)
-    errors14 = multipleBirths(indi_list, fam_list)
-    errors15 = fewerThanFifteenSiblings(fam_list)
-    errors16 = isMaleLastNames(indi_list, fam_list)
-    errors17 = parentsMarriedToDescendants(fam_list)
-    errors18 = siblingsNotMarried(indi_list, fam_list)
-    errors19 = firstCousinsNotMarry(fam_list)
-    errors20 = isAuntUnc(indi_list, fam_list)
-    errors21 = correctGender(indi_list, fam_list)
-    errors22 = uniqueIds(indi_list, fam_list)
-    errors23 = uniqueNameAndBirth(indi_list)
-    errors25 = uniqueNameAndBirthInFam(indi_list, fam_list)
-    
-    errors = errors1 + errors2 + errors3 + errors4 + errors5 + errors6 + errors7 + errors8 + errors9 + errors10 + errors11 + errors12 + errors13 + errors14 + errors15 + errors16 + errors17 + errors18 + errors19 + errors20 + errors21 + errors22
-    errors += errors23
-    errors += errors25
+    errors += validDate(indi_list, fam_list)                        # Error 1
+    errors += birthBeforeMarriage(indi_list, fam_list)              # Error 2
+    errors += birthBeforeDeath(indi_list)                           # Error 3
+    errors += marrBeforeDivorce(fam_list)                           # Error 4
+    errors += marrBeforeDeath(indi_list, fam_list)                  # Error 5
+    errors += divorceBeforeDeath(indi_list, fam_list)               # Error 6
+    errors += tooOld(indi_list)                                     # Error 7
+    errors += birthBeforeMarriageOfParents(indi_list, fam_list)     # Error 8
+    errors += birthBeforeDeathOfParents(indi_list, fam_list)        # Error 9
+    errors += marrBefore14(indi_list, fam_list)                     # Error 10
+    errors += isBigamy(indi_list, fam_list)                         # Error 11
+    errors += parentsTooOld(indi_list, fam_list)                    # Error 12
+    errors += sibilingSpacing(indi_list, fam_list)                  # Error 13
+    errors += multipleBirths(indi_list, fam_list)                   # Error 14
+    errors += fewerThanFifteenSiblings(fam_list)                    # Error 15
+    errors += isMaleLastNames(indi_list, fam_list)                  # Error 16
+    errors += parentsMarriedToDescendants(fam_list)                 # Error 17
+    errors += siblingsNotMarried(indi_list, fam_list)               # Error 18
+    errors += firstCousinsNotMarry(fam_list)                        # Error 19
+    errors += isAuntUnc(indi_list, fam_list)                        # Error 20
+    errors += correctGender(indi_list, fam_list)                    # Error 21
+    errors += uniqueIds(indi_list, fam_list)                        # Error 22
+    errors += uniqueNameAndBirth(indi_list)                         # Error 23
+    errors += uniqueFamily(fam_list)                                # Error 24
+    errors += uniqueNameAndBirthInFam(indi_list, fam_list)          # Error 25
     
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -212,7 +210,7 @@ if __name__ == "__main__":
             fam['children'] = "NA"
         fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
 
-    with open('sprint_output/sprint_output_3.txt', 'w') as f:
+    with open('sprint_output/sprint_output_4.txt', 'w') as f:
         print("")
         f.write("\n")
         print("Individuals")
