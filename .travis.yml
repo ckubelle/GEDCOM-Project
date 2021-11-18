@@ -32,3 +32,4 @@ script:
   - python -m unittest test_user_stories.test_user_story_23
   - python -m unittest test_user_stories.test_user_story_24
   - python -m unittest test_user_stories.test_user_story_25
+  - python -m unittest test_user_stories.test_user_story_26

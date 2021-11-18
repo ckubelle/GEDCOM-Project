@@ -3,15 +3,15 @@ Individuals
 +-------+-------------------------+--------+------------+-----+-------+------------+-----------+-----------------------------+
 |   ID  |           Name          | Gender |  Birthday  | Age | Alive |   Death    |   Child   |            Spouse           |
 +-------+-------------------------+--------+------------+-----+-------+------------+-----------+-----------------------------+
-| @I01@ |      Joseph /Biden/     |   M    | 1942-11-20 |  78 |  True |     NA     |     NA    |      {'@F02@', '@F01@'}     |
+| @I01@ |      Joseph /Biden/     |   M    | 1942-11-20 |  78 |  True |     NA     |     NA    |      {'@F01@', '@F02@'}     |
 | @I02@ |     Neilia /Hunter/     |   F    | 1942-07-28 |  30 | False | 1972-12-18 |     NA    |          {'@F02@'}          |
-| @I03@ |      Jill /Jacobs/      |   F    | 1951-06-03 |  70 |  True |     NA     |     NA    |      {'@F01@', '@F03@'}     |
+| @I03@ |      Jill /Jacobs/      |   F    | 1951-06-03 |  70 |  True |     NA     |     NA    |      {'@F03@', '@F01@'}     |
 | @I04@ |       Beau /Biden/      |   M    | 1969-02-03 |  46 | False | 2015-05-30 | {'@F02@'} |      {'@F12@', '@F04@'}     |
-| @I05@ |    Hunter /NotBiden/    |   M    | 1939-02-04 |  82 |  True |     NA     | {'@F02@'} | {'@F06@', '@F05@', '@F07@'} |
+| @I05@ |    Hunter /NotBiden/    |   M    | 1939-02-04 |  82 |  True |     NA     | {'@F02@'} | {'@F05@', '@F07@', '@F06@'} |
 | @I06@ |      Naomi /Biden/      |   F    | 1973-11-08 | -55 | False | 1917-12-18 |     NA    |              NA             |
 | @I07@ |      Ashley /Biden/     |   F    | 2022-06-08 |  0  |  True |     NA     | {'@F01@'} |          {'@F08@'}          |
 | @I08@ |      Howard /Krein/     |   M    | 1966-01-01 |  55 |  True |     NA     |     NA    |          {'@F08@'}          |
-| @I09@ |     Hallie /Olivere/    |   F    | 1972-11-30 |  48 |  True |     NA     |     NA    |      {'@F04@', '@F09@'}     |
+| @I09@ |     Hallie /Olivere/    |   F    | 1972-11-30 |  48 |  True |     NA     |     NA    |      {'@F09@', '@F04@'}     |
 | @I10@ |     Natalie /Biden/     |   F    | 2015-10-04 |  6  |  True |     NA     | {'@F04@'} |          {'@F11@'}          |
 | @I11@ |      Robert /Biden/     |   M    | 2016-03-10 |  5  |  True |     NA     | {'@F04@'} |          {'@F09@'}          |
 | @I12@ |     Kathleen /Buhle/    |   F    | 1970-06-11 |  51 |  True |     NA     |     NA    |          {'@F06@'}          |
@@ -46,11 +46,11 @@ Families
 |   ID  |  Married   |  Divorced  | Husband ID |    Husband Name   | Wife ID |        Wife Name        |                                                                 Children                                                                |
 +-------+------------+------------+------------+-------------------+---------+-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | @F01@ | 1977-06-17 |     NA     |   @I01@    |   Joseph /Biden/  |  @I03@  |      Jill /Jacobs/      |                                                                {'@I07@'}                                                                |
-| @F02@ | 1975-08-27 |     NA     |   @I01@    |   Joseph /Biden/  |  @I02@  |     Neilia /Hunter/     |                                                       {'@I05@', '@I06@', '@I04@'}                                                       |
+| @F02@ | 1975-08-27 |     NA     |   @I01@    |   Joseph /Biden/  |  @I02@  |     Neilia /Hunter/     |                                                       {'@I06@', '@I05@', '@I04@'}                                                       |
 | @F03@ | 1970-02-14 | 1975-08-05 |   @I19@    |  Bill /Stevenson/ |  @I03@  |      Jill /Jacobs/      |                                                                    NA                                                                   |
-| @F04@ | 2002-11-30 | 2021-08-05 |   @I04@    |    Beau /Biden/   |  @I09@  |     Hallie /Olivere/    |                                                            {'@I11@', '@I10@'}                                                           |
-| @F05@ | 2019-05-16 |     NA     |   @I05@    | Hunter /NotBiden/ |  @I18@  |     Melissa /Cohen/     | {'@I23@', '@I34@', '@I24@', '@I21@', '@I35@', '@I26@', '@I22@', '@I33@', '@I27@', '@I30@', '@I32@', '@I29@', '@I31@', '@I20@', '@I25@'} |
-| @F06@ | 1993-07-07 | 1917-08-08 |   @I05@    | Hunter /NotBiden/ |  @I12@  |     Kathleen /Buhle/    |                                                       {'@I15@', '@I14@', '@I13@'}                                                       |
+| @F04@ | 2002-11-30 | 2021-08-05 |   @I04@    |    Beau /Biden/   |  @I09@  |     Hallie /Olivere/    |                                                            {'@I10@', '@I11@'}                                                           |
+| @F05@ | 2019-05-16 |     NA     |   @I05@    | Hunter /NotBiden/ |  @I18@  |     Melissa /Cohen/     | {'@I20@', '@I32@', '@I31@', '@I26@', '@I22@', '@I29@', '@I33@', '@I35@', '@I27@', '@I34@', '@I21@', '@I24@', '@I30@', '@I23@', '@I25@'} |
+| @F06@ | 1993-07-07 | 1917-08-08 |   @I05@    | Hunter /NotBiden/ |  @I12@  |     Kathleen /Buhle/    |                                                       {'@I13@', '@I15@', '@I14@'}                                                       |
 | @F07@ |     NA     |     NA     |   @I05@    | Hunter /NotBiden/ |  @I16@  | Lunden Alexis /Roberts/ |                                                                {'@I17@'}                                                                |
 | @F08@ | 1912-06-02 |     NA     |   @I08@    |   Howard /Krein/  |  @I07@  |      Ashley /Biden/     |                                                                    NA                                                                   |
 | @F09@ | 2020-06-02 |     NA     |   @I11@    |   Robert /Biden/  |  @I09@  |     Hallie /Olivere/    |                                                                    NA                                                                   |
@@ -69,13 +69,13 @@ Error US05: Marriage date in Family @F02@ occurs after death date of Neilia Hunt
 Error US05: Marriage date in Family @F12@ occurs after death date of Beau Biden (@I04@)
 Error US06: Divorce of FAM (@F04@) occurs after death of Husband (@I04@)
 Error US07: Lunden Alexis /Roberts/ (@I16@) is more than 150 years old
-Anomaly US08: Birth date of Hunter /NotBiden/ (@I05@) occurs before family (@F02@) marriage which is (1975-08-27) 
 Anomaly US08: Birth date of Naomi /Biden/ (@I06@) occurs before family (@F02@) marriage which is (1975-08-27) 
+Anomaly US08: Birth date of Hunter /NotBiden/ (@I05@) occurs before family (@F02@) marriage which is (1975-08-27) 
 Anomaly US08: Birth date of Beau /Biden/ (@I04@) occurs before family (@F02@) marriage which is (1975-08-27) 
-Anomaly US08: Birth date of Maisy /Biden/ (@I15@) occurs after family (@F06@) divorce which is (1917-08-08) 
-Anomaly US08: Birth date of Finnegan /Biden/ (@I14@) occurs after family (@F06@) divorce which is (1917-08-08) 
 Anomaly US08: Birth date of Naomi,Jr /Biden/ (@I13@) occurs before family (@F06@) marriage which is (1993-07-07) 
 Anomaly US08: Birth date of Naomi,Jr /Biden/ (@I13@) occurs after family (@F06@) divorce which is (1917-08-08) 
+Anomaly US08: Birth date of Maisy /Biden/ (@I15@) occurs after family (@F06@) divorce which is (1917-08-08) 
+Anomaly US08: Birth date of Finnegan /Biden/ (@I14@) occurs after family (@F06@) divorce which is (1917-08-08) 
 Error US09: Birth date of child Naomi /Biden/ (@I06@) occurs after death of mother Neilia /Hunter/ (@I02@) in family (@F02@). The birthday of child is 1973-11-08, and the death date of mother is 1972-12-18.
 Error US09: Birth date of child Robert /Biden/ (@I11@) occurs after 9 months after death of father Beau /Biden/ (@I04@) in family (@F04@). The birthday of child is 2016-03-10, and the death date of father is 2015-05-30.
 Error US10: Marriage date in Family @F08@ occured before both spouses were over 14 years of age.
@@ -87,7 +87,7 @@ Error US11: Marriage in Family @F05@ occurred during marriage to another spouse.
 Error US12: Age of parent in Family @F01@ is too old for their children.
 Error US12: Age of parent in Family @F05@ is too old for their children.
 Error US12: Age of parent in Family @F07@ is too old for their children.
-Error US13: Robert /Biden/ (@I11@) and Natalie /Biden/ (@I10@) are born within 8 months of each other and are not twins
+Error US13: Natalie /Biden/ (@I10@) and Robert /Biden/ (@I11@) are born within 8 months of each other and are not twins
 Error US13: Maisy /Biden/ (@I15@) and Finnegan /Biden/ (@I14@) are born within 8 months of each other and are not twins
 Error US14: Family (@F05@) has more than five siblings born at the same time
 Error US16: All males in Family @F02@ do not have the same last name
@@ -104,3 +104,11 @@ Error US23: Individual Olaf /Biden/ appears more than once in the GEDCOM file
 Error US23: Individual Joseph /Biden/ appears more than once in the GEDCOM file
 Error US24: Family @F04@ and Family @F13@ has the same husband name, wife name, and marriage date
 Error US25: Individual Olaf /Biden/ appears more than once in the same family
+Error US26: In the Family table, Beau /Biden/ (@I04@) is listed as a spouse in @F13@, but isn't listed as a spouse in @F13@ in the Individuals table
+Error US26: In the Family table, Naomi /Biden/ (@I06@) is listed as a child in @F02@, but isn't listed as a child in @F02@ in the Individuals table
+Error US26: In the Family table, Hallie /Olivere/ (@I09@) is listed as a spouse in @F13@, but isn't listed as a spouse in @F13@ in the Individuals table
+Error US26: In the Individuals table, Naomi,Jr /Biden/ (@I13@) is listed as a spouse in @F12@, but isn't listed as a spouse in @F12@ in the Family table
+Error US26: In the Family table, Finnegan /Biden/ (@I14@) is listed as a spouse in @F12@, but isn't listed as a spouse in @F12@ in the Individuals table
+Error US26: In the Individuals table, Navy Joan /Roberts/ (@I16@) is listed as a child in @F07@, but isn't listed as a child in @F07@ in the Family table
+Error US26: In the Family table, Navy Joan /Roberts/ (@I16@) is listed as a spouse in @F07@, but isn't listed as a spouse in @F07@ in the Individuals table
+Error US26: In the Individuals table, Macaroni /Biden/ (@I28@) is listed as a child in @F05@, but isn't listed as a child in @F05@ in the Family table

@@ -27,6 +27,7 @@ from user_stories.user_story_19 import firstCousinsNotMarry
 from user_stories.user_story_21 import correctGender
 from user_stories.user_story_17 import parentsMarriedToDescendants
 from user_stories.user_story_24 import uniqueFamily
+from user_stories.user_story_26 import correspondingEntries
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -191,6 +192,7 @@ if __name__ == "__main__":
     errors += uniqueNameAndBirth(indi_list)                         # Error 23
     errors += uniqueFamily(fam_list)                                # Error 24
     errors += uniqueNameAndBirthInFam(indi_list, fam_list)          # Error 25
+    errors += correspondingEntries(indi_list, fam_list)             # Error 26
     
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
