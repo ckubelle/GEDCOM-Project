@@ -4,6 +4,7 @@ python:
 
 install:
   - pip install python-dateutil
+  - pip install prettytable
 
 # command to run tests
 script:
