@@ -4,6 +4,7 @@ python:
 
 install:
   - pip install python-dateutil
+  - pip install prettytable
 
 # command to run tests
 script:
@@ -33,3 +34,5 @@ script:
   - python -m unittest test_user_stories.test_user_story_24
   - python -m unittest test_user_stories.test_user_story_25
   - python -m unittest test_user_stories.test_user_story_26
+  - python -m unittest test_user_stories.test_user_story_30
+  - python -m unittest test_user_stories.test_user_story_31
