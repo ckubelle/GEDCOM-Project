@@ -9,6 +9,7 @@ from user_stories.user_story_23 import uniqueNameAndBirth
 from user_stories.user_story_25 import uniqueNameAndBirthInFam
 from user_stories.user_story_3 import birthBeforeDeath
 from user_stories.user_story_30 import makeLivingMarriedTable
+from user_stories.user_story_31 import makeLivingSingleTable
 from user_stories.user_story_5 import marrBeforeDeath
 from user_stories.user_story_4 import marrBeforeDivorce
 from user_stories.user_story_22 import uniqueIds
@@ -195,6 +196,7 @@ if __name__ == "__main__":
     errors += uniqueNameAndBirthInFam(indi_list, fam_list)          # Error 25
     errors += correspondingEntries(indi_list, fam_list)             # Error 26
     living_married_table = makeLivingMarriedTable(indi_list, fam_list)  # US 30
+    living_single_table = makeLivingSingleTable(indi_list, fam_list)    # US 31
 
     indi_table = PrettyTable()
     indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -230,6 +232,11 @@ if __name__ == "__main__":
         f.write("US30: List of Living Married People\n")
         print(living_married_table)
         f.write(f'{living_married_table.get_string()}\n\n')
+
+        print("US31: List of Living Single People Over 30")  # US31
+        f.write("US31: List of Living Single People Over 30\n")
+        print(living_single_table)
+        f.write(f'{living_single_table.get_string()}\n\n')
         
         # print all found errors and anomalies
         if errors is not None:
