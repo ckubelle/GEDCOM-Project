@@ -62,14 +62,6 @@ class TestUserStory31(unittest.TestCase):
             ]
         ))
 
-        self.assertTrue(checkIfNeverMarried(
-            {'id': '@I01@', 'name': 'Joseph /Biden/', 'gender': 'M', 'birthday': datetime.date(1942, 11, 20), 'age': 79, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@', '@F01@'}},
-            
-            [
-                {'id': '@F01@', 'married': "NA", 'divorced': "NA", 'husb_id': '@I01@', 'husb_name': 'Joseph /Biden/', 'wife_id': '@I03@', 'wife_name': 'Jill /Jacobs/', 'children': {'@I07@'}}
-            ]
-        ))
-
     def test_if_living_and_over_30(self):
         self.assertTrue(checkIfLivingOver30({'id': '@I01@', 'name': 'Joseph /Biden/', 'gender': 'M', 'birthday': datetime.date(1942, 11, 20), 'age': 79, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@', '@F01@'}}))
         self.assertFalse(checkIfLivingOver30({'id': '@I01@', 'name': 'Joseph /Biden/', 'gender': 'M', 'birthday': datetime.date(2000, 11, 20), 'age': 21, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@', '@F01@'}}))
