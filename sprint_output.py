@@ -30,6 +30,7 @@ from user_stories.user_story_21 import correctGender
 from user_stories.user_story_17 import parentsMarriedToDescendants
 from user_stories.user_story_24 import uniqueFamily
 from user_stories.user_story_26 import correspondingEntries
+from user_stories.user_story_29 import makeDeceasedTable
 
 def gedcomData(indi_list, fam_list):
     validTags = ["INDI", "NAME", "SEX", "BIRT", "DEAT", "FAMC", "FAMS", "FAM", "MARR", "HUSB", "WIFE", "CHIL", "DIV", "DATE", "HEAD", "TRLR", "NOTE"]
@@ -195,6 +196,7 @@ if __name__ == "__main__":
     errors += uniqueFamily(fam_list)                                # Error 24
     errors += uniqueNameAndBirthInFam(indi_list, fam_list)          # Error 25
     errors += correspondingEntries(indi_list, fam_list)             # Error 26
+    deceased_table = makeDeceasedTable(indi_list)              # US 29
     living_married_table = makeLivingMarriedTable(indi_list, fam_list)  # US 30
     living_single_table = makeLivingSingleTable(indi_list, fam_list)    # US 31
 
@@ -227,6 +229,11 @@ if __name__ == "__main__":
         f.write("Families\n")
         print(fam_table)
         f.write(f'{fam_table.get_string()}\n\n')
+
+        print("US29: List Deceased")  # US29
+        f.write("US29: List Deceased\n")
+        print(deceased_table)
+        f.write(f'{deceased_table.get_string()}\n\n')
 
         print("US30: List of Living Married People")  # US30
         f.write("US30: List of Living Married People\n")
