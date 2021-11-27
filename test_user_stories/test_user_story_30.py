@@ -51,10 +51,9 @@ class TestUserStory30(unittest.TestCase):
         self.assertTrue(checkIfLiving({'id': '@I01@', 'name': 'Joseph /Biden/', 'gender': 'M', 'birthday': datetime.date(1942, 11, 20), 'age': 79, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@', '@F01@'}}))
         self.assertTrue(checkIfLiving({'id': '@I02@', 'name': 'Neilia /Hunter/', 'gender': 'F', 'birthday': datetime.date(1942, 7, 28), 'age': 30, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@'}}))
         self.assertFalse(checkIfLiving({'id': '@I02@', 'name': 'Neilia /Hunter/', 'gender': 'F', 'birthday': datetime.date(1942, 7, 28), 'age': 30, 'alive': False, 'death': datetime.date(1972, 12, 18), 'child': set(), 'spouse': {'@F02@'}}))
-
-    def test_if_not_living(self):
         self.assertFalse(checkIfLiving({'id': '@I02@', 'name': 'Neilia /Hunter/', 'gender': 'F', 'birthday': datetime.date(1942, 7, 28), 'age': 30, 'alive': False, 'death': datetime.date(1972, 12, 18), 'child': set(), 'spouse': {'@F02@'}}))
         self.assertTrue(checkIfLiving({'id': '@I01@', 'name': 'Joseph /Biden/', 'gender': 'M', 'birthday': datetime.date(1942, 11, 20), 'age': 79, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@', '@F01@'}}))
+        self.assertTrue(checkIfLiving({'id': '@I01@', 'name': 'Joseph /Biden/', 'gender': 'M', 'birthday': datetime.date(2021, 11, 27), 'age': 0, 'alive': True, 'death': 'NA', 'child': set(), 'spouse': {'@F02@', '@F01@'}}))
 
     def test_if_married(self):
         self.assertFalse(checkIfMarried(
