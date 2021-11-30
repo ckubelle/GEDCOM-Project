@@ -4,6 +4,8 @@
 
 from operator import itemgetter
 from prettytable import PrettyTable
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 def checkIfMarried(indi, fam_list):
     isMarried = False
@@ -14,7 +16,11 @@ def checkIfMarried(indi, fam_list):
     return isMarried
 
 def checkIfLiving(indi):
-    if indi["alive"] == True and indi["age"] > 0:
+    today = date.today()
+    years = relativedelta(today, indi["birthday"]).years
+    months = relativedelta(today, indi["birthday"]).months
+    days = relativedelta(today, indi["birthday"]).days
+    if indi["alive"] == True and indi["age"] >= 0 and (years >= 0 and months >= 0 and days >= 0):
         return True
     return False
 
