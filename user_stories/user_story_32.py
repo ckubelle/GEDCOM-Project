@@ -1,6 +1,13 @@
 from dateutil.relativedelta import relativedelta
 from prettytable import PrettyTable
 
+
+def compareDates(date1, date2):
+    if min(date1, date2) + relativedelta(days=1) >= max(date1, date2):
+        return True
+    return False
+
+
 def makeMultiTable(indi_list, fam_list):
     childrenBirthDates = {}
     multi_table = PrettyTable()
@@ -29,13 +36,12 @@ def makeMultiTable(indi_list, fam_list):
 
             for indi2 in individuals:
                 
-                if indi != indi2 and min(individuals[indi], individuals[indi2]) + relativedelta(days=1) >= max(individuals[indi], individuals[indi2]):
+                if indi != indi2 and compareDates(individuals[indi], individuals[indi2]):
                     similar_bdays.add(indi)
                     similar_bdays.add(indi2)
 
         #Only want to add if twins or more...
         if len(similar_bdays) > 1:
             multi_table.add_row([fam, similar_bdays])
-
 
     return multi_table
