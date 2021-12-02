@@ -206,10 +206,10 @@ if __name__ == "__main__":
     multiple_birth_table = makeMultiTable(indi_list, fam_list)          # US 32
 
     indi_table = PrettyTable()
-    indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
+    indi_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age (US27)", "Alive", "Death", "Child", "Spouse"]
 
     fam_table = PrettyTable()
-    fam_table.field_names = ["ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
+    fam_table.field_names = ["ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children (US28: Order By Age)"]
 
     for indi in indi_list:
         if len(indi['child']) == 0:
