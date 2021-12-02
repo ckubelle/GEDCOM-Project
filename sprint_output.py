@@ -24,6 +24,7 @@ from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_11 import isBigamy
 from user_stories.user_story_20 import isAuntUnc
 from user_stories.user_story_27 import isIncludeAge
+from user_stories.user_story_28 import orderedSibs
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 from user_stories.user_story_18 import siblingsNotMarried
@@ -218,9 +219,12 @@ if __name__ == "__main__":
         indi_table.add_row([indi['id'], indi['name'], indi['gender'], indi['birthday'], indi['age'], indi['alive'], indi['death'], indi['child'], indi['spouse']])
 
     for fam in fam_list:
-        if len(fam['children']) == 0:
-            fam['children'] = "NA"
-        fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], fam['children']])
+        #if len(fam['children']) == 0:
+            #fam['children'] = "NA"
+        sibs = orderedSibs(indi_list, fam)      # US 28
+        if sibs == []:
+            sibs = "NA"
+        fam_table.add_row([fam['id'], fam['married'], fam['divorced'], fam['husb_id'], fam['husb_name'], fam['wife_id'], fam['wife_name'], sibs])
 
     with open('sprint_output/sprint_output_4.txt', 'w') as f:
         print("")
