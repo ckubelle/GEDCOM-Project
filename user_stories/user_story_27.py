@@ -10,13 +10,8 @@ def isIncludeAge(indi_list):
     return errorStatements
 
 # return true if given individual's age is included
-def checkIncludeAge(indi_list, fam_list, indi):
-    for ind in indi_list:
-        if ind['id'] == indi['id']:
-            # if ind has no birthday, return false
-            if ind['birthday'] == "NA":
-                return False
-            # else, if ind still has no age, return false
-            elif ind['age'] == "NA":
-                return False
-    return True
+def checkIncludeAge(indi):
+    if indi['birthday'] == "NA" or indi['age'] == "NA":
+        return False
+    else:
+        return True
