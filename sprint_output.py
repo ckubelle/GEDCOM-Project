@@ -22,6 +22,7 @@ from user_stories.user_story_10 import marrBefore14
 from user_stories.user_story_12 import parentsTooOld
 from user_stories.user_story_11 import isBigamy
 from user_stories.user_story_20 import isAuntUnc
+from user_stories.user_story_27 import isIncludeAge
 from user_stories.user_story_9 import birthBeforeDeathOfParents
 from user_stories.user_story_15 import fewerThanFifteenSiblings
 from user_stories.user_story_18 import siblingsNotMarried
@@ -196,6 +197,7 @@ if __name__ == "__main__":
     errors += uniqueFamily(fam_list)                                # Error 24
     errors += uniqueNameAndBirthInFam(indi_list, fam_list)          # Error 25
     errors += correspondingEntries(indi_list, fam_list)             # Error 26
+    errors += isIncludeAge(indi_list)                               # Error 27
     deceased_table = makeDeceasedTable(indi_list)              # US 29
     living_married_table = makeLivingMarriedTable(indi_list, fam_list)  # US 30
     living_single_table = makeLivingSingleTable(indi_list, fam_list)    # US 31
