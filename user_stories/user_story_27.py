@@ -9,9 +9,14 @@ def isIncludeAge(indi_list):
             errorStatements.append("Error US27: Individual %s does not have a current age" % (ind["id"]))
     return errorStatements
 
-# return true if given individual's age is included
 def checkIncludeAge(indi):
     if indi['birthday'] == "NA" or indi['age'] == "NA":
         return False
     else:
-        return True
+        # check if age is current or correct
+        today = date.today()
+        diff = relativedelta.relativedelta(today, indi['birthday']).years
+        if (diff != indi['age']):
+            return False
+        else:
+            return True
